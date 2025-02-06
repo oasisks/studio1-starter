@@ -5,7 +5,7 @@ let app = createApp({
 		tasks: [
 			{
 				done: false,
-				title: "",
+				title: "Todo1",
 				active: true,
 			}
 		]

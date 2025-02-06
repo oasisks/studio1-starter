@@ -8,7 +8,24 @@
 </head>
 <body>
 	<div id="app">
+		<ma-data src="local:tasks" v-model="tasks" autosave></ma-data>
+		<h1>{{(tasks.filter(task => task.done == true)).length}} done of {{tasks.length}} total</h1>
+		<div v-for="(task, i) in tasks">
+			<input type="checkbox" v-model="task.done">
+			<input type="text" v-model="task.title" @keyup.enter="addItem" v-focus="task.active" @focus="setActive(i)">
+			<button @click="deleteItem(i)">
+				Delete
+			</button>
+		</div>
+		<div>
+			<button @click="addItem">
+				Add
+			</button>
+			<button @click="clearCompleted">
+				Clear Completed
+			</button>
 
+		</div>
 	</div>
 </body>
 </html>
